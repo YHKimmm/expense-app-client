@@ -1,8 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
+import expensesSlice from './expensesSlice';
+import ToastMiddleWare from '../middlewares/ToastMiddleWare';
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
+    expensesSlice: expensesSlice,
   },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(ToastMiddleWare),
 });
