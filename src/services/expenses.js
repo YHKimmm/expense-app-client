@@ -3,13 +3,19 @@ import { setExpenses, addExpense, editExpense, deleteExpense, setExpensesError, 
 import axios from "axios";
 
 const axiosInstance = axios.create({
-    baseURL: 'https://localhost:7078/api/Expenses',
+    baseURL: `${process.env.REACT_APP_API_URL}/api/Expenses`,
 })
+
+axiosInstance.interceptors.request.use(config => {
+    config.headers = { Authorization: `Bearer ${sessionStorage.getItem('token')}` };
+    return config;
+});
+
 
 export const GetExpenses = async (dispatch) => {
     try {
         // api call
-        const {data} = await axiosInstance.get();
+        const { data } = await axiosInstance.get();
         dispatch(setExpenses(data));
     } catch {
         dispatch(setExpensesError());
@@ -19,7 +25,7 @@ export const GetExpenses = async (dispatch) => {
 export const AddExpense = async (dispatch, expense) => {
     try {
         // api call
-        const {data} = await axiosInstance.post('', expense);
+        const { data } = await axiosInstance.post('', expense);
         dispatch(addExpense(data));
     } catch {
         dispatch(addExpenseError());
@@ -39,7 +45,7 @@ export const UpdateExpense = async (dispatch, expense) => {
 export const DeleteExpense = async (dispatch, expense) => {
     try {
         // api call
-        await axiosInstance.delete('', {data: {...expense}});
+        await axiosInstance.delete('', { data: { ...expense } });
         dispatch(deleteExpense(expense));
     } catch {
         dispatch(deleteExpenseError());
