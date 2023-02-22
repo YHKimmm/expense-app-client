@@ -54,8 +54,8 @@ const StatistcsPage = () => {
     };
     return (
         <div hidden={!statistics || !statistics.length}>
-            <div className="m-auto text-center" style={{ maxWidth: '35rem', maxHeight: '35rem' }}>
-                <h4 style={{ marginTop: '10px' }}>Expenses per Category</h4>
+            <div className="m-auto text-center max-w-xl" >
+                <h4 className=" text-gray-500 font-bold mt-3">Expenses per Category</h4>
                 <Doughnut data={data} />
             </div>
         </div>

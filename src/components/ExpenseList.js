@@ -1,7 +1,6 @@
 import { React, useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { GetExpenses } from '../services/expenses';
-import { Row, Col, Button } from 'react-bootstrap';
 import ExpenseForm from './ExpenseForm';
 
 const ExpenseList = () => {
@@ -36,13 +35,23 @@ const ListRow = ({ expense }) => {
 const ExpenseRow = ({ expense, setIsEditing, isEditing }) => {
     return (
         <>
-            <div>
-                <Row>
-                    <Col>{expense.description}</Col>
-                    <Col>${expense.amount}</Col>
-                    <Col><Button variant="warning" onClick={() => setIsEditing(!isEditing)}>Edit</Button></Col>
-                </Row>
-                <hr />
+            <div className="flex flex-row items-center justify-between py-3">
+                <div className="w-3/5 text-sm sm:text-base">{expense.description}</div>
+                <div className="w-1/5 text-sm sm:text-base">${expense.amount}</div>
+                <div className="w-1/5 flex justify-end">
+                    <button
+                        className='font-bold py-1 px-2 rounded focus:outline-none'
+                        onClick={() => setIsEditing(!isEditing)}
+                    >
+                        {!isEditing && (
+                            <span
+                                className="material-symbols-outlined text-base sm:text-2xl"
+                            >
+                                edit
+                            </span>
+                        )}
+                    </button>
+                </div>
             </div>
         </>
     )
