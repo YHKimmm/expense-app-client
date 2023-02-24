@@ -30,6 +30,7 @@ const Navbar = () => {
                                 ?
                                 <>
                                     <NavLink to='/' className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100">Home</NavLink>
+                                    <NavLink to='/expenses' className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100">Expenses</NavLink>
                                     <NavLink to='/statistics' className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100">Statistics</NavLink>
                                     <a href='/signin' onClick={() => { dispatch(userLoggedOut()) }} className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100">Log out</a>
                                 </>
@@ -109,6 +110,15 @@ const Navbar = () => {
                                                         }}
                                                     >
                                                         Home
+                                                    </NavLink>
+                                                    <NavLink
+                                                        to="/expenses"
+                                                        className="block px-3 py-4 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100"
+                                                        onClick={() => {
+                                                            setIsMenuOpen(false);
+                                                        }}
+                                                    >
+                                                        Expenses
                                                     </NavLink>
                                                     <NavLink
                                                         to="/statistics"

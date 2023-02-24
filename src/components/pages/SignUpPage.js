@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { SignUp } from "../services/authentication";
+import { SignUp } from "../../services/authentication";
 import { useDispatch } from "react-redux";
-import ThirdPartySignInByGoogle from "./ThirdPartySignInByGoogle";
+import ThirdPartySignInByGoogle from "../ThirdPartySignInByGoogle";
 import { useNavigate } from "react-router-dom";
 
 const SignUpPage = () => {

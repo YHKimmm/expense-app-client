@@ -1,8 +1,9 @@
 import { Doughnut } from "react-chartjs-2";
 import "chart.js/auto";
 import { useDispatch, useSelector } from "react-redux";
-import { GetStatistics } from "../services/statistitcs";
+import { GetStatistics } from "../../services/statistitcs";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const StatistcsPage = () => {
     const dispatch = useDispatch();
@@ -53,11 +54,15 @@ const StatistcsPage = () => {
         ],
     };
     return (
-        <div hidden={!statistics || !statistics.length}>
-            <div className="m-auto text-center max-w-xl" >
-                <h4 className=" text-gray-500 font-bold mt-3">Expenses per Category</h4>
-                <Doughnut data={data} />
-            </div>
+        <div className="m-auto text-center max-w-xl">
+            <h4 className=" text-gray-500 font-bold mt-3">Expenses per Category</h4>
+            {!statistics || !statistics.length ? (
+                <div className="text-center mt-3">
+                    <h5 className="mt-3">
+                        <Link to='/expenses' className="font-bold text-purple-400 hover:text-purple-600 uppercase">Go add your new expense!</Link>
+                    </h5>
+                </div>
+            ) : <Doughnut data={data} />}
         </div>
     );
 };

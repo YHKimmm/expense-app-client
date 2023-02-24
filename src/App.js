@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react';
-import SignInPage from './components/SignInPage';
-import SignUpPage from './components/SignUpPage';
-import HomePage from './components/HomePage';
-import StatistcsPage from './components/StatistcsPage';
+import HomePage from './components/pages/HomePage';
+import SignInPage from './components/pages/SignInPage';
+import SignUpPage from './components/pages/SignUpPage';
+import ExpensePage from './components/pages/ExpensePage';
+import StatistcsPage from './components/pages/StatistcsPage';
 import { Route, Routes } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux';
 import { userAuthenticated } from './app/authenticationSlice';
 import Navbar from './components/Navbar';
+import PageNotFound from './components/pages/PageNotFound';
 
 function App() {
   const isAuthenticated = useSelector(state => state.authenticationSlice.isAuthenticated);
@@ -25,11 +27,12 @@ function App() {
     <>
       <Navbar />
       <Routes>
-        <Route path='/' element={isAuthenticated ? <HomePage /> : <SignInPage />} />
+        <Route path='/' element={<HomePage />} />
+        <Route path='/expenses' element={isAuthenticated ? <ExpensePage /> : <SignInPage />} />
         <Route path='/signup' element={<SignUpPage />} />
         <Route path='/signin' element={<SignInPage />} />
         <Route path='/statistics' element={isAuthenticated ? <StatistcsPage /> : <SignInPage />} />
-        <Route component={() => <h2>Page not found!</h2>} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </>
   );

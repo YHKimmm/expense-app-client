@@ -1,10 +1,11 @@
 import { React, useState, useEffect } from 'react'
 import { AddExpense, UpdateExpense, DeleteExpense } from '../services/expenses';
+import { commonExpenseDescriptions } from './listOfDescriptions/ExpenseDescriptions';
 import { useDispatch } from 'react-redux';
 
 const ExpenseForm = ({ expense, setIsEditing }) => {
     const dispatch = useDispatch();
-    const descriptions = ['Groceries', 'Gas', 'Rent', 'Car Payment', 'Car Insurance']
+    const descriptions = commonExpenseDescriptions;
     const [amount, setAmount] = useState(0);
     const [description, setDescription] = useState(descriptions[0]);
     const [isNewExpense, setIsNewExpense] = useState(true);

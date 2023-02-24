@@ -1,4 +1,4 @@
-import { setExpenses, addExpense, editExpense, deleteExpense, setExpensesError, addExpenseError, editExpenseError, deleteExpenseError }
+import { setExpenses, addExpense, totalExpense, editExpense, deleteExpense, setExpensesError, addExpenseError, editExpenseError, deleteExpenseError }
     from "../app/expensesSlice";
 import axios from "axios";
 
@@ -17,6 +17,16 @@ export const GetExpenses = async (dispatch) => {
         // api call
         const { data } = await axiosInstance.get();
         dispatch(setExpenses(data));
+    } catch {
+        dispatch(setExpensesError());
+    }
+}
+
+export const GetTotalExpense = async (dispatch) => {
+    try {
+        // api call
+        const { data } = await axiosInstance.get('/total');
+        dispatch(totalExpense(data));
     } catch {
         dispatch(setExpensesError());
     }

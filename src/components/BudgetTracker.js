@@ -1,0 +1,45 @@
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { GetTotalExpense } from "../services/expenses";
+
+const BudgetTracker = () => {
+    const dispatch = useDispatch();
+
+    const budget = useSelector((state) => state.budgetSlice.budget);
+    const expenses = useSelector((state) => state.expensesSlice.expenses);
+    const totalExpense = useSelector((state) => state.expensesSlice.totalExpense);
+    const [budgetLimitReached, setBudgetLimitReached] = useState(false);
+    const [percentage, setPercentage] = useState(0);
+
+    console.log("totalExpense", totalExpense);
+
+    useEffect(() => {
+        const percentageValue = Math.round((totalExpense / budget) * 100);
+        setPercentage(percentageValue);
+
+        const budgetLimit = budget * 0.8;
+        if (totalExpense > budgetLimit) {
+            setBudgetLimitReached(true);
+        } else {
+            setBudgetLimitReached(false);
+        }
+    }, [budget, totalExpense]);
+
+    useEffect(() => {
+        GetTotalExpense(dispatch);
+    }, [expenses]);
+
+    return (
+        <div>
+            <p>Budget: ${budget}</p>
+            <p>Total Expenses: ${totalExpense}</p>
+            {budgetLimitReached && (
+                <p className="text-red-400 font-bold">
+                    You have reached {percentage}% of your budget limit!
+                </p>
+            )}
+        </div>
+    );
+};
+
+export default BudgetTracker;

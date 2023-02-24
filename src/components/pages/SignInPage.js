@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { SignIn } from "../services/authentication";
-import ThirdPartySignInByGoogle from "./ThirdPartySignInByGoogle";
+import { SignIn } from "../../services/authentication";
+import ThirdPartySignInByGoogle from "../ThirdPartySignInByGoogle";
 
 const SignInPage = () => {
     const navigate = useNavigate();
