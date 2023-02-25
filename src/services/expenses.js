@@ -25,7 +25,7 @@ export const GetExpenses = async (dispatch) => {
 export const GetTotalExpense = async (dispatch) => {
     try {
         // api call
-        const { data } = await axiosInstance.get('/total');
+        const { data } = await axiosInstance.get('/totalexpense');
         dispatch(totalExpense(data));
     } catch {
         dispatch(setExpensesError());

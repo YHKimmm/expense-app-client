@@ -6,8 +6,6 @@ import { useNavigate } from "react-router-dom";
 
 const SignUpPage = () => {
     const navigate = useNavigate();
-
-
     const [errorMessage, setErrorMessage] = useState('');
     const dispatch = useDispatch();
 
