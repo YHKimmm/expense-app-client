@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { userLoggedOut } from '../app/authenticationSlice';
 import { useState } from 'react';
 
-const imageFolderPath = process.env.PUBLIC_URL + "/assets/images/";
+const imageFolderPath = process.env.PUBLIC_URL + "/";
 
 
 const Navbar = () => {
@@ -20,7 +20,7 @@ const Navbar = () => {
                     <div className="flex-shrink-0 flex items-center">
                         <h1 className="text-2xl sm:text-3xl font-bold text-purple-600 cursor-pointer">
                             <NavLink to='/'>
-                                <img src={`${imageFolderPath}expense_tracker_logo.webp`} alt='logo' className='w-20 sm:w-24' />
+                                <img src={`${imageFolderPath}expense_tracker_logo.png`} alt='logo' className='w-20 sm:w-24' />
                             </NavLink>
                         </h1>
                     </div>
@@ -95,7 +95,7 @@ const Navbar = () => {
                                             <div className="flex-shrink-0 flex items-center mb-4">
                                                 <h1 className="text-2xl sm:text-3xl font-bold text-purple-600 cursor-pointer">
                                                     <NavLink to='/' onClick={() => setIsMenuOpen(false)}>
-                                                        <img src={`${imageFolderPath}expense_tracker_logo.webp`} alt='logo' className='w-20 sm:w-24' />
+                                                        <img src={`${imageFolderPath}expense_tracker_logo.png`} alt='logo' className='w-20 sm:w-24' />
                                                     </NavLink>
                                                 </h1>
                                             </div>
