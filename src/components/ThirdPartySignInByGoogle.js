@@ -23,7 +23,12 @@ const ThirdPartySignInByGoogle = () => {
                         console.log('Success ', r)
                     }}
                 onFailure={e => console.log('Error ', e)}
-                style={{ display: 'block' }}
+                style={{
+                    display: 'block',
+                    width: '80%', // adjust the width based on your preference
+                    maxWidth: '300px', // set a maximum width to avoid overflow
+                    margin: '0 auto' // center the button horizontally
+                }}
             />
         </div>
     )

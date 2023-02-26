@@ -86,6 +86,7 @@ const ExpenseRow = ({
                 className={`flex flex-row items-center justify-between py-3 cursor-pointer ${isHighlighted ? "bg-violet-300 text-white rounded-lg font-bold mb-3" : ""
                     }`}
                 onClick={() => toggleHighlight(expense.id)}
+                title="Click to highlight your expense!"
             >
                 <div className="w-3/5 text-sm sm:text-base">{expense.description}</div>
                 <div className="w-1/5 text-sm sm:text-base">${expense.amount}</div>
