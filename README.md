@@ -48,4 +48,4 @@ https://expensefrontend.azurewebsites.net/
 
 ## Preview
 
-![chrome_E5OofbRm30](https://im4.ezgif.com/tmp/ezgif-4-a2b4ea9139.jpg)
+![expense-tracker-statistics](https://user-images.githubusercontent.com/102700164/227445190-833c260c-be46-4877-858c-7b156e324e18.jpg)
